@@ -5,16 +5,18 @@
 
 int min( int x, int y );
 
+//Steps to promotiion to be used later
 static const int STEPS_TO_PROMOTION = 50;
 static const int FOREGROUND_QUEUE_STEPS = 5;
 static const int MAX_ARRAY_SIZE_RETURN = 50;
 
+//This runs but is showing unused in Clion? Why?
 void printNames( )
 {
     /* TODO : Fill in you and your partner's names (or N/A if you worked individually) */
     printf("\nThis solution was completed by:\n");
-    printf("<student name #1>\n");
-    printf("<student name #2 (if no partner write \"N/A\")>\n");
+    printf("David Hieger YPK967\n");
+    printf("N/A");
 }
 schedule* createSchedule( ) {
     Queue* q1 =  createQueue();
