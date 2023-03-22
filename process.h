@@ -23,7 +23,6 @@ typedef struct process
     char* processName;
     long startTickCount;
     long spentTickCount;
-    //TODO: Put the data for your process here!
 
 }  process;
 

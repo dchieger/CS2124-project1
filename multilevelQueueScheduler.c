@@ -3,9 +3,9 @@
 #include "multilevelQueueScheduler.h"
 
 
+
 int min( int x, int y );
 
-//Steps to promotiion to be used later
 static const int STEPS_TO_PROMOTION = 50;
 static const int FOREGROUND_QUEUE_STEPS = 5;
 static const int MAX_ARRAY_SIZE_RETURN = 50;
@@ -21,6 +21,9 @@ void printNames( )
 schedule* createSchedule( ) {
     Queue* q1 =  createQueue();
     Queue* q2 =  createQueue();
+    //commit .12
+    //Use calloc instead of malloc all my homies hate malloc
+    //it will save you time because it initializes contents to zero
     schedule* result = calloc(1, sizeof (schedule));
     result->foreQueue = q1;
     result->backQueue = q2;
@@ -29,6 +32,9 @@ schedule* createSchedule( ) {
     return  result;
 }
 bool isScheduleUnfinished( schedule *ps ) {
+    // commit .3
+    //Shortened to a single line using ! operator
+
     return  !(isEmpty(ps->foreQueue) & isEmpty(ps->backQueue));
 }
 void addNewProcessToSchedule( schedule *ps, char *processName, priority p ) {
@@ -49,6 +55,8 @@ char* runNextProcessInSchedule( schedule *ps ) {
         buffer[i] = calloc(1, sizeof (char) );
     }
     queueType process;
+    //commit .5 Added is empty check
+    //BEFORE YOU CALL GET NEXT CHECK IF ITS EMPTY -DR JESSICA
     process = (!isEmpty(ps->foreQueue)) ?  dequeue(ps->foreQueue)  :  getNext(ps->backQueue);
     loadProcessData(process->processData);
     bool done =   runProcess(process->processName, buffer , &numSteps);
@@ -71,6 +79,7 @@ void attemptPromote( schedule *ps ) {
     LLNode* head = ps->backQueue->qFront;
     while (head != NULL){
         if(ps->totalTick - head->qt->startTickCount >= 50){
+            // attempting to promote process to foreground passes the name and proccess data
             promoteProcess(head->qt->processName,head->qt->processData);
             enqueue(ps->foreQueue,head->qt);
             if (old == NULL){
