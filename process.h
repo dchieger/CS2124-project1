@@ -9,7 +9,7 @@ typedef struct processData{ int heap[  30        ]; char       PN21[       21];c
 /* struct process (only accessed in student written code)
  *
  * The data associated with a specific process.
- * At minimum you need to track the process name,
+ * At minimum you need to track the process name
  * and a pointer to the processData struct returned
  * by initializeProcessData,
  *
@@ -18,8 +18,14 @@ typedef struct processData{ int heap[  30        ]; char       PN21[       21];c
  */
 typedef struct process
 {
+    priority processPriority;
+    processData* processData;
+    char* processName;
+    long startTickCount;
+    long spentTickCount;
     //TODO: Put the data for your process here!
 
 }  process;
 
 #endif
+

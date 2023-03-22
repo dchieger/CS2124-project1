@@ -19,6 +19,8 @@ typedef struct schedule
 {
     Queue *foreQueue;
     Queue *backQueue;
+    long totalTick;
+    long completedTask;
     //TODO: Put the data for your schedule program here!
 
 
@@ -37,3 +39,4 @@ void attemptPromote( schedule *ps );
 int getNumCyclesToPromote( schedule *ps ) ;
 
 #endif
+
